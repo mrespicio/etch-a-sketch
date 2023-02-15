@@ -1,0 +1,12 @@
+body{
+	background-color: lightblue;
+}
+
+#grid-container{
+
+}
+
+.grid-item{
+	background-color: seagreen;
+	border: solid 1px blue;
+}
