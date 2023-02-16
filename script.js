@@ -28,6 +28,9 @@ function setSizeButtons(){
 	});
 }
 
+function setClearButton(currentSize){
+
+}
 // when button is selected pass in style to creategrid
 function setStyleButtons(){
 
@@ -75,3 +78,5 @@ function resetGrid(){
 // default grid
 createGrid(16);
 setSizeButtons();
+// get current size and style
+//setClearButton();
