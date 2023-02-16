@@ -27,3 +27,8 @@ body{
 .fill-2{
 	background-color: darkslategray;
 }
+
+.btn-selected{
+	background-color: blue;
+}
+

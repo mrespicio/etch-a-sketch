@@ -4,16 +4,23 @@ const smBtn = document.getElementById('small');
 const mdBtn = document.getElementById('medium');
 const lgBtn = document.getElementById('large');
 
-let dimension;
 smBtn.addEventListener('click', () => {
+	smBtn.setAttribute('class', 'btn-selected');
 	resetGrid();
 	createGrid(8)
 });
-mdBtn.addEventListener('click', () => createGrid(16))
+mdBtn.addEventListener('click', () => {
+	mdBtn.setAttribute('class', 'btn-selected');
+	resetGrid();
+	createGrid(16);
+});
+lgBtn.addEventListener('click', () => {
+	lgBtn.setAttribute('class', 'btn-selected');
+	resetGrid();
+	createGrid(32);
+});
 
-// buttons
-// each button has a dimension
-
+let dimension;
 function createGrid(dimension){
 	gridContainer.style.setProperty('display', 'grid')
 	gridContainer.style.setProperty('grid-template-columns', `repeat(${dimension}, 1fr)`)
@@ -33,11 +40,16 @@ function createGrid(dimension){
 	}
 }
 
-// loop grid and remove nodes
-// while child node exists, remove it
 function resetGrid(){
-
+	while(gridContainer.lastElementChild){
+		gridContainer.removeChild(gridContainer.lastElementChild)
+	}
 }
 
-// input
+function removeBtnStyle(btn){
+	console.log('removed')
+	btn.setAttribute("style", "");
+}
+
+// default grid
 createGrid(16);
