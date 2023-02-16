@@ -1,18 +1,27 @@
 body{
-	background-color: white;
+	background-color: #53ADB2;
 }
 
 #game-container{
-	border: solid 1px red;
 	background-color: #F96861;
 	border-radius: 16px;
 	box-shadow: #970005;
-	padding: 20px;
+	padding: 30px 50px;
+	width: 40vw;
+	min-width: 600px;
+	margin: 0 auto;
+	text-align: center;
+}
+
+#game-container h1{
+	color: #FFFF97;
+	font-size: 36px;
 }
 
 #grid-container{
 	height: 600px;
 	width: 600px;
+	margin: 0 auto;
 }
 
 .grid-item{
@@ -29,9 +38,17 @@ body{
 }
 
 .btn-style{
-	font-size: 20px;
+	border: none;
+	color: #F96861;
+	background-color: #FFFF97;
+	font-size: 18px;
+	padding: .7em;
+	border-radius: 6px;
+
 }
 .btn-selected{
-	background-color: blue;
+	color: #FFFF97;
+	background-color: #53ADB2;
+
 }
 

@@ -14,7 +14,7 @@ function setSizeButtons(){
 	});
 	mdBtn.addEventListener('click', () => {
 		smBtn.classList.remove('btn-selected');
-		mdBtn.classList.remove('btn-selected');
+		lgBtn.classList.remove('btn-selected');
 		mdBtn.classList.add('btn-selected');
 		resetGrid();
 		createGrid(16);
@@ -28,16 +28,19 @@ function setSizeButtons(){
 	});
 }
 
+// when button is selected pass in style to creategrid
 function setStyleButtons(){
 
 }
 
+let style; 
 let dimension;
 function createGrid(dimension, style){
 	gridContainer.style.setProperty('display', 'grid')
 	gridContainer.style.setProperty('grid-template-columns', `repeat(${dimension}, 1fr)`)
 	gridContainer.style.setProperty('grid-auto-rows', '1fr')
-	createClassicGrid(dimension);
+	//createClassicGrid(dimension);
+	createModernGrid(dimension);
 }
 
 
@@ -51,8 +54,18 @@ function createClassicGrid(dimension){
 }
 
 function createModernGrid(dimension){
-	
+	for(i = 0; i < (Math.pow(dimension, 2)); i++){
+		let item = document.createElement('div');
+		item.setAttribute('class', 'grid-item')
+		item.addEventListener('mouseover', () => item.classList.add('fill')); // squares turn grey if gone over
+
+		if(item.classList.contains('fill')){
+			item.addEventListener('mouseover', () => item.classList.add('fill-2'))
+		}
+		gridContainer.appendChild(item);
+	}
 }
+
 function resetGrid(){
 	while(gridContainer.lastElementChild){
 		gridContainer.removeChild(gridContainer.lastElementChild)
