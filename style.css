@@ -28,6 +28,9 @@ body{
 	background-color: darkslategray;
 }
 
+.btn-style{
+	font-size: 16px;
+}
 .btn-selected{
 	background-color: blue;
 }
