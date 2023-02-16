@@ -1,9 +1,13 @@
 const gridContainer = document.getElementById('grid-container')
 
+
+// buttons
+// each button has a dimension
+
 function createGrid(dimension){
 	gridContainer.style.setProperty('display', 'grid')
-	gridContainer.style.setProperty('grid-template-columns', `repeat(${dimension}, 40px)`)
-	gridContainer.style.setProperty('grid-auto-rows', '40px')
+	gridContainer.style.setProperty('grid-template-columns', `repeat(${dimension}, 1fr)`)
+	gridContainer.style.setProperty('grid-auto-rows', '1fr')
 
 	// fill grid
 	for(i = 0; i < (Math.pow(dimension, 2)); i++){
@@ -12,10 +16,8 @@ function createGrid(dimension){
 		item.addEventListener('mouseover', () => item.classList.add('fill'))
 		gridContainer.appendChild(item);
 	}
-	console.log(dimension)
 }
 
 // input
-
 createGrid(10);
 

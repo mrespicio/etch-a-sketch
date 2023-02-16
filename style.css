@@ -1,5 +1,18 @@
 body{
-	background-color: lightblue;
+	background-color: white;
+}
+
+#game-container{
+	border: solid 1px red;
+	background-color: #F96861;
+	border-radius: 16px;
+	box-shadow: #970005;
+	padding: 20px;
+}
+
+#grid-container{
+	height: 600px;
+	width: 600px;
 }
 
 .grid-item{
