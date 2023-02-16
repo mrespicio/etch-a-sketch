@@ -2,11 +2,11 @@ body{
 	background-color: lightblue;
 }
 
-#grid-container{
-
+.grid-item{
+	background-color: white;
+	border: solid 1px black;
 }
 
-.grid-item{
-	background-color: seagreen;
-	border: solid 1px blue;
+.fill{
+	background-color: lightgray;
 }
