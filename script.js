@@ -62,10 +62,9 @@ function createModernGrid(dimension){
 		let item = document.createElement('div');
 		item.setAttribute('class', 'grid-item')
 		item.addEventListener('mouseover', e => {
-			if(!item.classList.contains('fill')) item.classList.add('fill');// squares turn grey if gone over
-			else if(item.classList.contains('fill'))
-				item.classList.add('fill-2');
-		}); 
+			item.style.backgroundColor = 'black'
+			if(item.style.opacity <= 0.9) item.style.opacity = +item.style.opacity + 0.1
+		});
 		gridContainer.appendChild(item);
 	}
 }

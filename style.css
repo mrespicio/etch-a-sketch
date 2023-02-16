@@ -22,19 +22,22 @@ body{
 	height: 600px;
 	width: 600px;
 	margin: 0 auto;
+	background-color: white;
 }
 
 .grid-item{
 	background-color: white;
-	border: solid 1px black;
+	border: solid 1px rgb(105,105,105, 1);
 }
 
 .fill{
-	background-color: lightgray;
+	background-color: black;
+	/*border: solid 1px black;
+	opacity: .1; */
 }
 
 .fill-2{
-	background-color: darkslategray;
+	background-color: blue;
 }
 
 .btn-style{
