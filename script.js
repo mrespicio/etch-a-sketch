@@ -68,6 +68,7 @@ function setButtons(sizeHolder, styleHolder){
 		rainbowBtn.classList.add('btn-selected');
 		modernBtn.classList.remove('btn-selected');
 		classicBtn.classList.remove('btn-selected');
+		resetGrid(sizeHolder, styleHolder)
 	});
 
 
@@ -101,6 +102,9 @@ function createGrid(dimension, style){
 		case 'classic':
 			createClassicGrid(dimension);
 			break;
+		case 'rainbow':
+			createRainbowGrid(dimension);
+			break;
 		default:
 			createClassicGrid(dimension);
 	}
@@ -128,13 +132,21 @@ function createModernGrid(dimension){
 	}
 }
 
+function createRainbowGrid(dimension){
+	for(i = 0; i < (Math.pow(dimension, 2)); i++){
+		let item = document.createElement('div');
+		item.setAttribute('class', 'grid-item')
+		item.addEventListener('mouseover', e => {
+			let r = Math.floor(Math.random() * 256)
+			let g = Math.floor(Math.random() * 256)
+			let b = Math.floor(Math.random() * 256)
+			let randomColor = 'rgb('+r+','+g+','+b+')';
+			item.style.backgroundColor = randomColor //randomize color
+		});
+		gridContainer.appendChild(item);
+	}
+}
 
 
-
-//createGrid(16, classic); // default grid
-//setSizeButtons('classic');
-// get current size and style
-//setClearButton(16, 'classic');
-//setStyleButtons('classic');
 setButtons(sizeHolder, styleHolder);
 createGrid(16, 'modern');
