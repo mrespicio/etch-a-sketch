@@ -26,12 +26,12 @@ body{
 }
 
 .grid-item{
-	background-color: white;
-	border: solid 1px rgb(105,105,105, 1);
+	background-color: #F2F2F2;
+	/*border: solid 1px rgb(105,105,105, .5); */
 }
 
 .fill{
-	background-color: black;
+	background-color: lightgray;
 	/*border: solid 1px black;
 	opacity: .1; */
 }
