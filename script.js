@@ -40,10 +40,12 @@ function setButtons(sizeHolder, styleHolder){
 	//style buttons
 	const classicBtn = document.getElementById('classic');
 	const modernBtn = document.getElementById('modern');
+	const rainbowBtn = document.getElementById('rainbow');
 
 	classicBtn.addEventListener('click', () => {
 		styleHolder = 'classic'
 		modernBtn.classList.remove('btn-selected');
+		rainbowBtn.classList.remove('btn-selected');
 		classicBtn.classList.add('btn-selected');
 		// instead of resetting grid need to change properties of items
 		resetGrid(sizeHolder, styleHolder) 
@@ -54,33 +56,35 @@ function setButtons(sizeHolder, styleHolder){
 	modernBtn.addEventListener('click', () => {
 		styleHolder = 'modern'
 		modernBtn.classList.add('btn-selected');
+		rainbowBtn.classList.remove('btn-selected');
 		classicBtn.classList.remove('btn-selected');
 		resetGrid(sizeHolder, styleHolder) 
 		//do not remove nodes - change properties of items instead
+	});
 
-		//createGrid(sizeHolder, 'modern')
 
+	rainbowBtn.addEventListener('click', () =>{
+		styleHolder = 'rainbow';
+		rainbowBtn.classList.add('btn-selected');
+		modernBtn.classList.remove('btn-selected');
+		classicBtn.classList.remove('btn-selected');
 	});
 
 
 	// clear button
 	// when board clears, retain size and style
 	const clearBtn = document.getElementById('clear');
-	clearBtn.addEventListener('click', () => {
-		resetGrid(sizeHolder, styleHolder)
-		//createGrid(dimension, style)
-	})
-}
+	clearBtn.addEventListener('click', () => resetGrid(sizeHolder, styleHolder));
+} // setButton
 
 
-// seems to be working for now
-// only use for changing sizes, removes all nodes
-// needs to be followed by another create grid function
+
 function resetGrid(sizeHolder, styleHolder){
+	// current board should retain if changing styles
 	while(gridContainer.lastElementChild) {
 		gridContainer.removeChild(gridContainer.lastElementChild)
 	}
-	// recreate grid using previous size and style
+	// recreate grid using previous size and style, applies to size change
 	createGrid(sizeHolder, styleHolder);
 }
 
@@ -123,6 +127,7 @@ function createModernGrid(dimension){
 		gridContainer.appendChild(item);
 	}
 }
+
 
 
 
