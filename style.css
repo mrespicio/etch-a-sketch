@@ -37,8 +37,8 @@ body{
 	font-size: 18px;
 	padding: .7em;
 	border-radius: 6px;
-
 }
+
 .btn-selected{
 	color: #FFFF97;
 	background-color: #53ADB2;
@@ -48,10 +48,8 @@ body{
 	display: flex;
 	justify-content: space-between;
 	margin: 30px auto;
-
 }
 
 #all-buttons >* >*{
 	margin: 0 5px;
 }
-
