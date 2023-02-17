@@ -1,12 +1,11 @@
 const gridContainer = document.getElementById('grid-container')
 
+// default grid
 let sizeHolder = 16;
 let styleHolder = 'modern';
 
 function setButtons(sizeHolder, styleHolder){
-
-	// size buttons
-	// board is cleared but style is retained
+	// size buttons - board is cleared but style is retained
 	const smBtn = document.getElementById('small');
 	const mdBtn = document.getElementById('medium');
 	const lgBtn = document.getElementById('large');
@@ -36,8 +35,7 @@ function setButtons(sizeHolder, styleHolder){
 		sizeHolder = 32;
 	});
 
-
-	//style buttons
+	//style buttons - clears board and changes style, size is retained
 	const classicBtn = document.getElementById('classic');
 	const modernBtn = document.getElementById('modern');
 	const rainbowBtn = document.getElementById('rainbow');
@@ -47,50 +45,38 @@ function setButtons(sizeHolder, styleHolder){
 		modernBtn.classList.remove('btn-selected');
 		rainbowBtn.classList.remove('btn-selected');
 		classicBtn.classList.add('btn-selected');
-		// instead of resetting grid need to change properties of items
 		resetGrid(sizeHolder, styleHolder) 
-		//createGrid(sizeHolder, 'classic')
-
 	});
 
 	modernBtn.addEventListener('click', () => {
 		styleHolder = 'modern'
-		modernBtn.classList.add('btn-selected');
 		rainbowBtn.classList.remove('btn-selected');
 		classicBtn.classList.remove('btn-selected');
+		modernBtn.classList.add('btn-selected');
 		resetGrid(sizeHolder, styleHolder) 
-		//do not remove nodes - change properties of items instead
 	});
-
 
 	rainbowBtn.addEventListener('click', () =>{
 		styleHolder = 'rainbow';
-		rainbowBtn.classList.add('btn-selected');
 		modernBtn.classList.remove('btn-selected');
 		classicBtn.classList.remove('btn-selected');
+		rainbowBtn.classList.add('btn-selected');
 		resetGrid(sizeHolder, styleHolder)
 	});
 
-
-	// clear button
-	// when board clears, retain size and style
+	// clear button - when board clears, retain size and style
 	const clearBtn = document.getElementById('clear');
 	clearBtn.addEventListener('click', () => resetGrid(sizeHolder, styleHolder));
-} // setButton
-
-
+} // setButton()
 
 function resetGrid(sizeHolder, styleHolder){
-	// current board should retain if changing styles
 	while(gridContainer.lastElementChild) {
 		gridContainer.removeChild(gridContainer.lastElementChild)
 	}
-	// recreate grid using previous size and style, applies to size change
+	// recreate grid using previous size and style
 	createGrid(sizeHolder, styleHolder);
 }
 
-let style; 
-let dimension;
 function createGrid(dimension, style){
 	gridContainer.style.setProperty('display', 'grid')
 	gridContainer.style.setProperty('grid-template-columns', `repeat(${dimension}, 1fr)`)
@@ -114,7 +100,7 @@ function createClassicGrid(dimension){
 	for(i = 0; i < (Math.pow(dimension, 2)); i++){
 		let item = document.createElement('div');
 		item.setAttribute('class', 'grid-item')
-		item.addEventListener('mouseover', () => item.classList.add('fill')); // squares turn grey if mouse passes
+		item.addEventListener('mouseover', () => item.style.backgroundColor = 'lightgray'); // squares turn grey if mouse passes
 		gridContainer.appendChild(item);
 	}
 }
@@ -140,13 +126,12 @@ function createRainbowGrid(dimension){
 			let r = Math.floor(Math.random() * 256)
 			let g = Math.floor(Math.random() * 256)
 			let b = Math.floor(Math.random() * 256)
-			let randomColor = 'rgb('+r+','+g+','+b+')';
-			item.style.backgroundColor = randomColor //randomize color
+			let randomColor = 'rgb('+r+','+g+','+b+')'; //randomize color
+			item.style.backgroundColor = randomColor 
 		});
 		gridContainer.appendChild(item);
 	}
 }
 
-
 setButtons(sizeHolder, styleHolder);
-createGrid(16, 'modern');
+createGrid(sizeHolder, styleHolder);

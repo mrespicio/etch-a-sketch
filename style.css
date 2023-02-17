@@ -16,23 +16,18 @@ body{
 #game-container h1{
 	color: #FFFF97;
 	font-size: 36px;
+	margin: 10px;
 }
 
 #grid-container{
 	height: 600px;
 	width: 600px;
-	margin: 0 auto;
+	margin: 24px auto;
 	background-color: white;
 }
 
 .grid-item{
 	background-color: #F2F2F2;
-	/*border: solid 1px rgb(105,105,105, .5); */
-}
-
-.fill{
-	background-color: lightgray;
-
 }
 
 .btn-style{
@@ -47,6 +42,16 @@ body{
 .btn-selected{
 	color: #FFFF97;
 	background-color: #53ADB2;
+}
 
+#all-buttons{
+	display: flex;
+	justify-content: space-between;
+	margin: 30px auto;
+
+}
+
+#all-buttons >* >*{
+	margin: 0 5px;
 }
 
