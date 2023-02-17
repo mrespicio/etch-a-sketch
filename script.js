@@ -1,11 +1,12 @@
 const gridContainer = document.getElementById('grid-container')
 
 let sizeHolder = 16;
-let styleHolder = 'classic';
+let styleHolder = 'modern';
 
 function setButtons(sizeHolder, styleHolder){
 
 	// size buttons
+	// board is cleared but style is retained
 	const smBtn = document.getElementById('small');
 	const mdBtn = document.getElementById('medium');
 	const lgBtn = document.getElementById('large');
@@ -15,7 +16,7 @@ function setButtons(sizeHolder, styleHolder){
 		mdBtn.classList.remove('btn-selected');
 		smBtn.classList.add('btn-selected');
 		resetGrid();
-		createGrid(8);
+		createGrid(8, styleHolder);
 		sizeHolder = 8;
 	});
 	mdBtn.addEventListener('click', () => {
@@ -23,7 +24,7 @@ function setButtons(sizeHolder, styleHolder){
 		lgBtn.classList.remove('btn-selected');
 		mdBtn.classList.add('btn-selected');
 		resetGrid();
-		createGrid(16);
+		createGrid(16, styleHolder);
 		sizeHolder = 16;
 	});
 	lgBtn.addEventListener('click', () => {
@@ -31,10 +32,9 @@ function setButtons(sizeHolder, styleHolder){
 		mdBtn.classList.remove('btn-selected');
 		lgBtn.classList.add('btn-selected');
 		resetGrid();
-		createGrid(32);
+		createGrid(32, styleHolder);
 		sizeHolder = 32;
 	});
-
 
 
 	//style buttons
@@ -42,16 +42,24 @@ function setButtons(sizeHolder, styleHolder){
 	const modernBtn = document.getElementById('modern');
 
 	classicBtn.addEventListener('click', () => {
+		styleHolder = 'classic'
 		modernBtn.classList.remove('btn-selected');
 		classicBtn.classList.add('btn-selected');
-		createGrid(sizeHolder, 'classic')
+		// instead of resetting grid need to change properties of items
+		resetGrid(sizeHolder, styleHolder) 
+		//createGrid(sizeHolder, 'classic')
+
 	});
 
 	modernBtn.addEventListener('click', () => {
+		styleHolder = 'modern'
 		modernBtn.classList.add('btn-selected');
 		classicBtn.classList.remove('btn-selected');
-		resetGrid(sizeHolder, styleHolder)
-		createGrid(sizeHolder, 'modern')
+		resetGrid(sizeHolder, styleHolder) 
+		//do not remove nodes - change properties of items instead
+
+		//createGrid(sizeHolder, 'modern')
+
 	});
 
 
@@ -64,6 +72,8 @@ function setButtons(sizeHolder, styleHolder){
 	})
 }
 
+
+// seems to be working for now
 // only use for changing sizes, removes all nodes
 // needs to be followed by another create grid function
 function resetGrid(sizeHolder, styleHolder){
@@ -72,13 +82,6 @@ function resetGrid(sizeHolder, styleHolder){
 	}
 	// recreate grid using previous size and style
 	createGrid(sizeHolder, styleHolder);
-}
-
-// when button is selected pass in style to creategrid
-// do not reset grid
-function setStyleButtons(currentSize){
-	
-	
 }
 
 let style; 
@@ -128,5 +131,5 @@ function createModernGrid(dimension){
 // get current size and style
 //setClearButton(16, 'classic');
 //setStyleButtons('classic');
-setButtons(16, 'classic');
-createGrid(16, 'classic');
+setButtons(sizeHolder, styleHolder);
+createGrid(16, 'modern');
